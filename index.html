@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Explorer's Catalogue</title>
+</head>
+<body>
+
+  <header>
+    <h1>Explorer's Catalogue</h1>
+    <p>Explorer's Catalogue: organize os países e lugares que você já visitou ou deseja conhecer.</p>
+
+    <nav>
+      <ul>
+        <li><a href="#cadastro">Cadastrar lugar</a></li>
+        <li><a href="#busca">Pesquisa, filtro e ordenação</a></li>
+        <li><a href="#lugares">Lugares cadastrados</a></li>
+        <li><a href="#detalhes">Detalhes do lugar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="cadastro">
+      <h2>Cadastrar novo lugar</h2>
+
+      <form action="#" method="post">
+        <p>
+          <label for="nome">Nome do lugar:</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex.: Torre Eiffel" required>
+        </p>
+
+        <p>
+          <label for="tipo">Tipo de lugar:</label>
+          <input type="text" id="tipo" name="tipo" placeholder="Ex.: Ponto turístico, praia, museu" required>
+        </p>
+
+        <p>
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade" required>
+        </p>
+
+        <p>
+          <label for="pais">País:</label>
+          <input type="text" id="pais" name="pais" required>
+        </p>
+
+        <p>
+          <label for="continente">Continente:</label>
+          <input type="text" id="continente" name="continente" placeholder="Ex.: Europa" required>
+        </p>
+
+        <p>
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro">
+        </p>
+
+        <p>
+          <label for="descricao">Descrição / registro da experiência:</label>
+          <textarea id="descricao" name="descricao" rows="4" cols="40" placeholder="Conte como foi ou por que deseja visitar"></textarea>
+        </p>
+
+        <p>
+          <label for="status">Status:</label>
+          <input type="text" id="status" name="status" placeholder="Visitado ou Desejo visitar" required>
+        </p>
+
+        <p>
+          <label for="data-visita">Data da visita:</label>
+          <input type="text" id="data-visita" name="data-visita" placeholder="dd/mm/aaaa">
+        </p>
+
+        <p>
+          <label for="avaliacao">Avaliação (1 a 5):</label>
+          <input type="text" id="avaliacao" name="avaliacao" placeholder="Ex.: 5">
+        </p>
+
+        <p>
+          <button type="submit">Salvar lugar</button>
+          <button type="reset">Limpar</button>
+        </p>
+      </form>
+    </section>
+
+    <aside id="busca">
+      <h2>Pesquisar, filtrar e ordenar:</h2>
+
+      <form action="#" method="get">
+        <p>
+          <label for="pesquisa">Pesquisar por nome, cidade ou país:</label>
+          <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite para pesquisar">
+        </p>
+
+        <p>
+          <label for="filtro-status">Filtrar por status:</label>
+          <input type="text" id="filtro-status" name="filtro-status" placeholder="Visitado ou Desejo visitar">
+        </p>
+
+        <p>
+          <label for="filtro-continente">Filtrar por continente:</label>
+          <input type="text" id="filtro-continente" name="filtro-continente" placeholder="Ex.: Europa">
+        </p>
+
+        <p>
+          <label for="ordenacao">Ordenar por:</label>
+          <input type="text" id="ordenacao" name="ordenacao" placeholder="Nome, país, data ou avaliação">
+        </p>
+
+        <p>
+          <button type="submit">Aplicar</button>
+        </p>
+      </form>
+    </aside>
+
+    <section id="lugares">
+      <h2>Lugares cadastrados</h2>
+
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Cidade</th>
+          <th>País</th>
+          <th>Continente</th>
+          <th>Status</th>
+          <th>Avaliação</th>
+          <th>Ações</th>
+        </tr>
+        <tr>
+          <td>Torre Eiffel</td>
+          <td>Ponto turístico</td>
+          <td>Paris</td>
+          <td>França</td>
+          <td>Europa</td>
+          <td>Visitado</td>
+          <td>5</td>
+          <td>
+            <button type="button">Ver detalhes</button>
+            <button type="button">Editar</button>
+            <button type="button">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Machu Picchu</td>
+          <td>Ponto turístico</td>
+          <td>Cusco</td>
+          <td>Peru</td>
+          <td>América do Sul</td>
+          <td>Desejo visitar</td>
+          <td>–</td>
+          <td>
+            <button type="button">Ver detalhes</button>
+            <button type="button">Editar</button>
+            <button type="button">Excluir</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Praia de Copacabana</td>
+          <td>Praia</td>
+          <td>Rio de Janeiro</td>
+          <td>Brasil</td>
+          <td>América do Sul</td>
+          <td>Visitado</td>
+          <td>4</td>
+          <td>
+            <button type="button">Ver detalhes</button>
+            <button type="button">Editar</button>
+            <button type="button">Excluir</button>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="detalhes">
+      <h2>Detalhes do lugar</h2>
+
+      <article>
+        <h3>Torre Eiffel</h3>
+
+        <img src= https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_1280.jpg
+             alt="Imagem ilustrativa da Torre Eiffel" width="400" height="220">
+
+        <ul>
+          <li>Tipo de lugar: Ponto turístico</li>
+          <li>Cidade: Paris</li>
+          <li>País: França</li>
+          <li>Continente: Europa</li>
+          <li>Endereço: Champ de Mars, 5 Avenue Anatole France, 75007 Paris</li>
+          <li>Status: Visitado</li>
+          <li>Data da visita: 15/07/2024</li>
+          <li>Avaliação: 5 de 5</li>
+        </ul>
+
+        <p>Descrição: Subimos ao pôr do sol e a vista da cidade foi incrível. Vale chegar cedo para evitar filas.</p>
+
+        <p>
+          <a href="#lugares">Voltar para a lista</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Torre+Eiffel+Paris" target="_blank">Ver no Google Maps</a>
+        </p>
+
+        <p>
+          <button type="button">Editar</button>
+          <button type="button">Excluir</button>
+        </p>
+      </article>
+
+       <article>
+        <h3>Machu Picchu</h3>
+ 
+        <img src=https://www.karikuy.com/wp-content/uploads/2023/11/when-machu-picchu-was-built.jpg
+             alt="Imagem ilustrativa de Machu Picchu" width="400" height="220">
+ 
+        <ul>
+          <li>Tipo de lugar: Ponto turístico</li>
+          <li>Cidade: Cusco</li>
+          <li>País: Peru</li>
+          <li>Continente: América do Sul</li>
+          <li>Endereço: Machu Picchu, Região de Cusco, Peru</li>
+          <li>Status: Desejo visitar</li>
+          <li>Data da visita: –</li>
+          <li>Avaliação: –</li>
+        </ul>
+ 
+        <p>Descrição: Quero conhecer a cidade inca e fazer a trilha até as ruínas. Preciso planejar com antecedência, pois os ingressos são limitados.</p>
+ 
+        <p>
+          <a href="#lugares">Voltar para a lista</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Machu+Picchu+Peru" target="_blank">Ver no Google Maps</a>
+        </p>
+ 
+        <p>
+          <button type="button">Editar</button>
+          <button type="button">Excluir</button>
+        </p>
+      </article>
+ 
+      <article>
+        <h3>Praia de Copacabana</h3>
+ 
+        <img src=https://tse2.mm.bing.net/th/id/OIP.GWa7GNCPUizl1-ZM7VKj-QHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3
+             alt="Imagem ilustrativa da Praia de Copacabana" width="400" height="220">
+ 
+        <ul>
+          <li>Tipo de lugar: Praia</li>
+          <li>Cidade: Rio de Janeiro</li>
+          <li>País: Brasil</li>
+          <li>Continente: América do Sul</li>
+          <li>Endereço: Av. Atlântica, Copacabana, Rio de Janeiro</li>
+          <li>Status: Visitado</li>
+          <li>Data da visita: 20/01/2024</li>
+          <li>Avaliação: 4 de 5</li>
+        </ul>
+ 
+        <p>Descrição: Passeamos pelo calçadão e aproveitamos o dia de sol na areia. A praia é movimentada, mas o clima é animado e tem ótimos quiosques.</p>
+ 
+        <p>
+          <a href="#lugares">Voltar para a lista</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Praia+de+Copacabana+Rio+de+Janeiro" target="_blank">Ver no Google Maps</a>
+        </p>
+ 
+        <p>
+          <button type="button">Editar</button>
+          <button type="button">Excluir</button>
+        </p>
+      </article>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Explorer's Catalogue. Projeto acadêmico.</p>
+    <p>Dados de localização poderão ser obtidos futuramente pela Google Maps Platform / Places API.</p>
+  </footer>
+
+</body>
+</html>
