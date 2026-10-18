@@ -2,185 +2,162 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Explorer's Catalogue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer's Catalogue – Catálogo do Explorador</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="pular-link" href="#conteudo">Ir para o conteúdo principal</a>
 
   <header>
     <h1>Explorer's Catalogue</h1>
-    <p>Explorer's Catalogue: organize os países e lugares que você já visitou ou deseja conhecer.</p>
-
-    <nav>
+    <p>Catálogo do Explorador: organize os países e lugares que você já visitou ou deseja conhecer.</p>
+    <nav aria-label="Navegação principal">
       <ul>
         <li><a href="#cadastro">Cadastrar lugar</a></li>
-        <li><a href="#busca">Pesquisa, filtro e ordenação</a></li>
-        <li><a href="#lugares">Lugares cadastrados</a></li>
-        <li><a href="#detalhes">Detalhes do lugar</a></li>
+        <li><a href="#busca">Pesquisa e filtros</a></li>
+        <li><a href="#lugares">Lugares</a></li>
+        <li><a href="#detalhes">Detalhes</a></li>
+        <li><a href="#mensagens">Mensagens</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
+  <main id="conteudo">
 
-    <section id="cadastro">
-      <h2>Cadastrar novo lugar</h2>
-
+    <section id="cadastro" aria-labelledby="titulo-cadastro">
+      <h2 id="titulo-cadastro">Cadastrar novo lugar</h2>
       <form action="#" method="post">
-        <p>
-          <label for="nome">Nome do lugar:</label>
+        <p class="campo">
+          <label for="nome">Nome do lugar *</label>
           <input type="text" id="nome" name="nome" placeholder="Ex.: Torre Eiffel" required>
         </p>
-
-        <p>
-          <label for="tipo">Tipo de lugar:</label>
+        <p class="campo">
+          <label for="tipo">Tipo de lugar *</label>
           <input type="text" id="tipo" name="tipo" placeholder="Ex.: Ponto turístico, praia, museu" required>
         </p>
-
-        <p>
-          <label for="cidade">Cidade:</label>
+        <p class="campo">
+          <label for="cidade">Cidade *</label>
           <input type="text" id="cidade" name="cidade" required>
         </p>
-
-        <p>
-          <label for="pais">País:</label>
+        <p class="campo">
+          <label for="pais">País *</label>
           <input type="text" id="pais" name="pais" required>
         </p>
-
-        <p>
-          <label for="continente">Continente:</label>
+        <p class="campo">
+          <label for="continente">Continente *</label>
           <input type="text" id="continente" name="continente" placeholder="Ex.: Europa" required>
         </p>
-
-        <p>
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro">
-        </p>
-
-        <p>
-          <label for="descricao">Descrição / registro da experiência:</label>
-          <textarea id="descricao" name="descricao" rows="4" cols="40" placeholder="Conte como foi ou por que deseja visitar"></textarea>
-        </p>
-
-        <p>
-          <label for="status">Status:</label>
+        <p class="campo">
+          <label for="status">Status *</label>
           <input type="text" id="status" name="status" placeholder="Visitado ou Desejo visitar" required>
         </p>
-
-        <p>
-          <label for="data-visita">Data da visita:</label>
+        <p class="campo campo-largo">
+          <label for="endereco">Endereço</label>
+          <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro">
+        </p>
+        <p class="campo">
+          <label for="data-visita">Data da visita</label>
           <input type="text" id="data-visita" name="data-visita" placeholder="dd/mm/aaaa">
         </p>
-
-        <p>
-          <label for="avaliacao">Avaliação (1 a 5):</label>
+        <p class="campo">
+          <label for="avaliacao">Avaliação (1 a 5)</label>
           <input type="text" id="avaliacao" name="avaliacao" placeholder="Ex.: 5">
         </p>
-
-        <p>
+        <p class="campo campo-largo">
+          <label for="descricao">Descrição / registro da experiência</label>
+          <textarea id="descricao" name="descricao" rows="4" placeholder="Conte como foi ou por que deseja visitar"></textarea>
+        </p>
+        <p class="ajuda campo-largo">Campos marcados com * são obrigatórios.</p>
+        <p class="acoes campo-largo">
           <button type="submit">Salvar lugar</button>
           <button type="reset">Limpar</button>
         </p>
       </form>
     </section>
 
-    <aside id="busca">
-      <h2>Pesquisar, filtrar e ordenar:</h2>
-
+    <aside id="busca" aria-labelledby="titulo-busca">
+      <h2 id="titulo-busca">Pesquisar, filtrar e ordenar</h2>
       <form action="#" method="get">
-        <p>
-          <label for="pesquisa">Pesquisar por nome, cidade ou país:</label>
+        <p class="campo">
+          <label for="pesquisa">Pesquisar por nome, cidade ou país</label>
           <input type="text" id="pesquisa" name="pesquisa" placeholder="Digite para pesquisar">
         </p>
-
-        <p>
-          <label for="filtro-status">Filtrar por status:</label>
+        <p class="campo">
+          <label for="filtro-status">Filtrar por status</label>
           <input type="text" id="filtro-status" name="filtro-status" placeholder="Visitado ou Desejo visitar">
         </p>
-
-        <p>
-          <label for="filtro-continente">Filtrar por continente:</label>
+        <p class="campo">
+          <label for="filtro-continente">Filtrar por continente</label>
           <input type="text" id="filtro-continente" name="filtro-continente" placeholder="Ex.: Europa">
         </p>
-
-        <p>
-          <label for="ordenacao">Ordenar por:</label>
+        <p class="campo">
+          <label for="ordenacao">Ordenar por</label>
           <input type="text" id="ordenacao" name="ordenacao" placeholder="Nome, país, data ou avaliação">
         </p>
-
-        <p>
+        <p class="acoes">
           <button type="submit">Aplicar</button>
         </p>
       </form>
     </aside>
 
-    <section id="lugares">
-      <h2>Lugares cadastrados</h2>
-
+    <section id="lugares" aria-labelledby="titulo-lugares">
+      <h2 id="titulo-lugares">Lugares cadastrados</h2>
       <table>
         <tr>
-          <th>Nome</th>
-          <th>Tipo</th>
-          <th>Cidade</th>
-          <th>País</th>
-          <th>Continente</th>
-          <th>Status</th>
-          <th>Avaliação</th>
-          <th>Ações</th>
+          <th>Nome</th><th>Tipo</th><th>Cidade</th><th>País</th><th>Continente</th><th>Status</th><th>Avaliação</th><th>Ações</th>
         </tr>
         <tr>
-          <td>Torre Eiffel</td>
-          <td>Ponto turístico</td>
-          <td>Paris</td>
-          <td>França</td>
-          <td>Europa</td>
-          <td>Visitado</td>
-          <td>5</td>
-          <td>
-            <button type="button">Ver detalhes</button>
-            <button type="button">Editar</button>
-            <button type="button">Excluir</button>
+          <td data-label="Nome">Torre Eiffel</td>
+          <td data-label="Tipo">Ponto turístico</td>
+          <td data-label="Cidade">Paris</td>
+          <td data-label="País">França</td>
+          <td data-label="Continente">Europa</td>
+          <td data-label="Status" data-status="visitado">Visitado</td>
+          <td data-label="Avaliação">5</td>
+          <td data-label="Ações">
+            <button type="button" class="btn-detalhes">Ver detalhes</button>
+            <button type="button" class="btn-editar">Editar</button>
+            <button type="button" class="btn-excluir">Excluir</button>
           </td>
         </tr>
         <tr>
-          <td>Machu Picchu</td>
-          <td>Ponto turístico</td>
-          <td>Cusco</td>
-          <td>Peru</td>
-          <td>América do Sul</td>
-          <td>Desejo visitar</td>
-          <td>–</td>
-          <td>
-            <button type="button">Ver detalhes</button>
-            <button type="button">Editar</button>
-            <button type="button">Excluir</button>
+          <td data-label="Nome">Machu Picchu</td>
+          <td data-label="Tipo">Ponto turístico</td>
+          <td data-label="Cidade">Cusco</td>
+          <td data-label="País">Peru</td>
+          <td data-label="Continente">América do Sul</td>
+          <td data-label="Status" data-status="desejo">Desejo visitar</td>
+          <td data-label="Avaliação">–</td>
+          <td data-label="Ações">
+            <button type="button" class="btn-detalhes">Ver detalhes</button>
+            <button type="button" class="btn-editar">Editar</button>
+            <button type="button" class="btn-excluir">Excluir</button>
           </td>
         </tr>
         <tr>
-          <td>Praia de Copacabana</td>
-          <td>Praia</td>
-          <td>Rio de Janeiro</td>
-          <td>Brasil</td>
-          <td>América do Sul</td>
-          <td>Visitado</td>
-          <td>4</td>
-          <td>
-            <button type="button">Ver detalhes</button>
-            <button type="button">Editar</button>
-            <button type="button">Excluir</button>
+          <td data-label="Nome">Praia de Copacabana</td>
+          <td data-label="Tipo">Praia</td>
+          <td data-label="Cidade">Rio de Janeiro</td>
+          <td data-label="País">Brasil</td>
+          <td data-label="Continente">América do Sul</td>
+          <td data-label="Status" data-status="visitado">Visitado</td>
+          <td data-label="Avaliação">4</td>
+          <td data-label="Ações">
+            <button type="button" class="btn-detalhes">Ver detalhes</button>
+            <button type="button" class="btn-editar">Editar</button>
+            <button type="button" class="btn-excluir">Excluir</button>
           </td>
         </tr>
       </table>
     </section>
 
-    <section id="detalhes">
-      <h2>Detalhes do lugar</h2>
+    <section id="detalhes" aria-labelledby="titulo-detalhes">
+      <h2 id="titulo-detalhes">Detalhes dos lugares</h2>
 
-      <article>
+      <article data-status="visitado">
         <h3>Torre Eiffel</h3>
-
-        <img src= https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_1280.jpg
-             alt="Imagem ilustrativa da Torre Eiffel" width="400" height="220">
-
+        <img src="https://cdn.pixabay.com/photo/2015/10/06/18/26/eiffel-tower-975004_1280.jpg" alt="Imagem ilustrativa da Torre Eiffel" width="400" height="220">
         <ul>
           <li>Tipo de lugar: Ponto turístico</li>
           <li>Cidade: Paris</li>
@@ -191,26 +168,20 @@
           <li>Data da visita: 15/07/2024</li>
           <li>Avaliação: 5 de 5</li>
         </ul>
-
         <p>Descrição: Subimos ao pôr do sol e a vista da cidade foi incrível. Vale chegar cedo para evitar filas.</p>
-
-        <p>
+        <p class="links">
           <a href="#lugares">Voltar para a lista</a>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Torre+Eiffel+Paris" target="_blank">Ver no Google Maps</a>
         </p>
-
-        <p>
-          <button type="button">Editar</button>
-          <button type="button">Excluir</button>
+        <p class="acoes">
+          <button type="button" class="btn-editar">Editar</button>
+          <button type="button" class="btn-excluir">Excluir</button>
         </p>
       </article>
 
-       <article>
+      <article data-status="desejo">
         <h3>Machu Picchu</h3>
- 
-        <img src=https://www.karikuy.com/wp-content/uploads/2023/11/when-machu-picchu-was-built.jpg
-             alt="Imagem ilustrativa de Machu Picchu" width="400" height="220">
- 
+        <img src="https://www.karikuy.com/wp-content/uploads/2023/11/when-machu-picchu-was-built.jpg" alt="Imagem ilustrativa de Machu Picchu" width="400" height="220">
         <ul>
           <li>Tipo de lugar: Ponto turístico</li>
           <li>Cidade: Cusco</li>
@@ -221,26 +192,20 @@
           <li>Data da visita: –</li>
           <li>Avaliação: –</li>
         </ul>
- 
         <p>Descrição: Quero conhecer a cidade inca e fazer a trilha até as ruínas. Preciso planejar com antecedência, pois os ingressos são limitados.</p>
- 
-        <p>
+        <p class="links">
           <a href="#lugares">Voltar para a lista</a>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Machu+Picchu+Peru" target="_blank">Ver no Google Maps</a>
         </p>
- 
-        <p>
-          <button type="button">Editar</button>
-          <button type="button">Excluir</button>
+        <p class="acoes">
+          <button type="button" class="btn-editar">Editar</button>
+          <button type="button" class="btn-excluir">Excluir</button>
         </p>
       </article>
- 
-      <article>
+
+      <article data-status="visitado">
         <h3>Praia de Copacabana</h3>
- 
-        <img src=https://tse2.mm.bing.net/th/id/OIP.GWa7GNCPUizl1-ZM7VKj-QHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3
-             alt="Imagem ilustrativa da Praia de Copacabana" width="400" height="220">
- 
+        <img src="https://tse2.mm.bing.net/th/id/OIP.GWa7GNCPUizl1-ZM7VKj-QHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Imagem ilustrativa da Praia de Copacabana" width="400" height="220">
         <ul>
           <li>Tipo de lugar: Praia</li>
           <li>Cidade: Rio de Janeiro</li>
@@ -251,17 +216,30 @@
           <li>Data da visita: 20/01/2024</li>
           <li>Avaliação: 4 de 5</li>
         </ul>
- 
         <p>Descrição: Passeamos pelo calçadão e aproveitamos o dia de sol na areia. A praia é movimentada, mas o clima é animado e tem ótimos quiosques.</p>
- 
-        <p>
+        <p class="links">
           <a href="#lugares">Voltar para a lista</a>
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Praia+de+Copacabana+Rio+de+Janeiro" target="_blank">Ver no Google Maps</a>
         </p>
- 
-        <p>
-          <button type="button">Editar</button>
-          <button type="button">Excluir</button>
+        <p class="acoes">
+          <button type="button" class="btn-editar">Editar</button>
+          <button type="button" class="btn-excluir">Excluir</button>
+        </p>
+      </article>
+    </section>
+
+    <section id="mensagens" aria-labelledby="titulo-mensagens">
+      <h2 id="titulo-mensagens">Mensagens e estados do sistema</h2>
+      <p class="mensagem sucesso" role="status">Lugar cadastrado com sucesso!</p>
+      <p class="mensagem erro" role="alert">Não foi possível salvar. Preencha todos os campos obrigatórios.</p>
+      <p class="mensagem aviso">Nenhum lugar encontrado para os filtros selecionados.</p>
+      <p class="mensagem info">Dica: use a pesquisa para encontrar um lugar pelo nome, cidade ou país.</p>
+      <article class="confirmacao" role="alertdialog" aria-labelledby="titulo-confirmacao">
+        <h3 id="titulo-confirmacao">Confirmar exclusão</h3>
+        <p>Tem certeza de que deseja excluir "Machu Picchu"? Essa ação não pode ser desfeita.</p>
+        <p class="acoes">
+          <button type="button">Cancelar</button>
+          <button type="button" class="btn-excluir">Confirmar exclusão</button>
         </p>
       </article>
     </section>
@@ -269,9 +247,8 @@
   </main>
 
   <footer>
-    <p>© 2026 Explorer's Catalogue. Projeto acadêmico.</p>
+    <p>© 2026 Explorer's Catalogue – Catálogo do Explorador. Projeto acadêmico.</p>
     <p>Dados de localização poderão ser obtidos futuramente pela Google Maps Platform / Places API.</p>
   </footer>
-
 </body>
 </html>
