@@ -36,6 +36,7 @@ const LUGARES_INICIAIS = [
 let lugares = [];
 let editandoId = null;
 let idParaExcluir = null;
+let imagemPendente = null; // null = sem mudança; texto = nova imagem; '' = remover
 let extrasApi = null; // dados extras vindos da API (ex.: coordenadas)
 
 const $ = (id) => document.getElementById(id);
@@ -90,8 +91,9 @@ function lerStatus(texto) {
 function salvar() {
   try {
     localStorage.setItem(CHAVE, JSON.stringify(lugares));
+    return true;
   } catch (erro) {
-    mostrar('msg-lista', 'erro', 'Não foi possível salvar os dados neste navegador.');
+    return false; // por exemplo, armazenamento cheio
   }
 }
 
@@ -225,6 +227,39 @@ function renderTudo() {
 }
 
 /* ===== Cadastro, validação e edição ===== */
+/* ===== Imagem do lugar (enviada pelo usuário) ===== */
+// Reduz a imagem para caber no localStorage (largura máxima de 800px, JPEG)
+function reduzirImagem(arquivo, larguraMax = 800) {
+  return new Promise((resolver, rejeitar) => {
+    const leitor = new FileReader();
+    leitor.onerror = () => rejeitar(new Error('leitura'));
+    leitor.onload = () => {
+      const imagem = new Image();
+      imagem.onerror = () => rejeitar(new Error('imagem'));
+      imagem.onload = () => {
+        const escala = Math.min(1, larguraMax / imagem.width);
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(imagem.width * escala);
+        canvas.height = Math.round(imagem.height * escala);
+        const contexto = canvas.getContext('2d');
+        contexto.fillStyle = '#fff';
+        contexto.fillRect(0, 0, canvas.width, canvas.height);
+        contexto.drawImage(imagem, 0, 0, canvas.width, canvas.height);
+        resolver(canvas.toDataURL('image/jpeg', 0.8));
+      };
+      imagem.src = leitor.result;
+    };
+    leitor.readAsDataURL(arquivo);
+  });
+}
+
+function atualizarPrevia(src) {
+  const previa = $('previa-imagem');
+  previa.hidden = !src;
+  if (src) previa.src = src;
+  $('btn-remover-imagem').hidden = !src;
+}
+
 function lerFormulario() {
   const valor = (id) => $(id).value.trim();
   return {
@@ -251,6 +286,8 @@ function validar(dados) {
 function sairDoModoEdicao() {
   editandoId = null;
   extrasApi = null;
+  imagemPendente = null;
+  atualizarPrevia('');
   $('btn-salvar').textContent = 'Salvar lugar';
 }
 
@@ -263,6 +300,7 @@ function aoEnviarFormulario(evento) {
     return;
   }
 
+  const antes = [...lugares];
   const status = lerStatus(dados.status);
   const visitado = status === 'visitado';
   const anterior = lugares.find((item) => item.id === editandoId);
@@ -272,14 +310,18 @@ function aoEnviarFormulario(evento) {
     status, endereco: dados.endereco, descricao: dados.descricao,
     dataVisita: visitado ? dados.data : '',
     avaliacao: visitado && dados.avaliacao ? Number(dados.avaliacao) : null,
-    imagem: anterior ? anterior.imagem : IMAGEM_PADRAO,
+    imagem: imagemPendente !== null ? (imagemPendente || IMAGEM_PADRAO) : (anterior ? anterior.imagem : IMAGEM_PADRAO),
     mapa: anterior ? anterior.mapa : (extrasApi ? extrasApi.mapa : '')
   };
 
   if (anterior) lugares[lugares.indexOf(anterior)] = lugar;
   else lugares.push(lugar);
 
-  salvar();
+  if (!salvar()) {
+    lugares = antes;
+    mostrar('feedback', 'erro', 'Não foi possível salvar: o armazenamento do navegador está cheio. Tente uma imagem menor ou exclua algum lugar.');
+    return;
+  }
   renderTudo();
   $('form-lugar').reset(); // também sai do modo edição
   mostrar('feedback', 'sucesso', anterior ? 'Lugar atualizado com sucesso!' : 'Lugar cadastrado com sucesso!');
@@ -296,6 +338,7 @@ function preencherFormulario(lugar) {
   $('data-visita').value = lugar.dataVisita || '';
   $('avaliacao').value = lugar.avaliacao || '';
   $('descricao').value = lugar.descricao || '';
+  atualizarPrevia(lugar.imagem && lugar.imagem !== IMAGEM_PADRAO ? lugar.imagem : '');
 }
 
 function iniciarEdicao(id) {
@@ -418,6 +461,30 @@ $('form-lugar').addEventListener('submit', aoEnviarFormulario);
 $('form-lugar').addEventListener('reset', () => {
   sairDoModoEdicao();
   ocultar('feedback');
+});
+
+$('imagem').addEventListener('change', async () => {
+  const arquivo = $('imagem').files[0];
+  if (!arquivo) return;
+  if (!arquivo.type.startsWith('image/')) {
+    mostrar('feedback', 'erro', 'Escolha um arquivo de imagem (JPG, PNG, WEBP...).');
+    $('imagem').value = '';
+    return;
+  }
+  try {
+    imagemPendente = await reduzirImagem(arquivo);
+    atualizarPrevia(imagemPendente);
+    ocultar('feedback');
+  } catch (erro) {
+    mostrar('feedback', 'erro', 'Não foi possível ler essa imagem. Tente outro arquivo.');
+    $('imagem').value = '';
+  }
+});
+
+$('btn-remover-imagem').addEventListener('click', () => {
+  imagemPendente = '';
+  $('imagem').value = '';
+  atualizarPrevia('');
 });
 
 $('form-api').addEventListener('submit', (evento) => {

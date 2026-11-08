@@ -28,7 +28,7 @@
     <section id="cadastro" aria-labelledby="titulo-cadastro">
       <h2 id="titulo-cadastro">Cadastrar novo lugar</h2>
 
-      <h3>Buscar na internet </h3>
+      <h3>Buscar na internet</h3>
       <form id="form-api" action="#" method="get">
         <p class="campo campo-largo">
           <label for="busca-api">Nome do lugar</label>
@@ -82,6 +82,12 @@
         <p class="campo campo-largo">
           <label for="descricao">Descrição / registro da experiência</label>
           <textarea id="descricao" name="descricao" rows="4" placeholder="Conte como foi ou por que deseja visitar"></textarea>
+        </p>
+        <p class="campo campo-largo">
+          <label for="imagem">Imagem do lugar (opcional)</label>
+          <input type="file" id="imagem" name="imagem" accept="image/*">
+          <img id="previa-imagem" alt="Pré-visualização da imagem escolhida" hidden>
+          <button type="button" id="btn-remover-imagem" hidden>Remover imagem</button>
         </p>
         <p class="ajuda campo-largo">Campos marcados com * são obrigatórios.</p>
         <p id="feedback" class="mensagem campo-largo" role="status" hidden></p>
