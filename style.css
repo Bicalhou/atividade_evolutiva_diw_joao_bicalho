@@ -344,5 +344,5 @@ footer { background: #0c2a16; border-top: 6px solid var(--destaque); font-style:
 .resultados li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1rem; margin-bottom: 0.5rem; padding: 0.6rem 0.75rem; background: #fff; border: 2px solid var(--borda); border-radius: 0.25rem; }
 .resultados li p { margin: 0; flex: 1 1 14rem; overflow-wrap: anywhere; }
 #lugares .mensagem, #lugares .confirmacao { margin-top: 1rem; }
-#painel-detalhes { grid-column: 1 / -1; }
-#painel-detalhes img { max-height: 22rem; object-fit: cover; }
+#detalhes > .mensagem { grid-column: 1 / -1; }
+.em-foco { outline: 4px solid var(--destaque); outline-offset: 4px; }

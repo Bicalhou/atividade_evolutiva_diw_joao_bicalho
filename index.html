@@ -28,14 +28,14 @@
     <section id="cadastro" aria-labelledby="titulo-cadastro">
       <h2 id="titulo-cadastro">Cadastrar novo lugar</h2>
 
-      <h3>Buscar na internet (API do OpenStreetMap)</h3>
+      <h3>Buscar na internet </h3>
       <form id="form-api" action="#" method="get">
         <p class="campo campo-largo">
           <label for="busca-api">Nome do lugar</label>
           <input type="text" id="busca-api" placeholder="Ex.: Machu Picchu">
         </p>
         <p class="acoes campo-largo">
-          <button type="submit">Buscar na API</button>
+          <button type="submit">Buscar</button>
         </p>
       </form>
       <p id="status-api" class="mensagem info" role="status" hidden></p>
@@ -138,8 +138,8 @@
     </section>
 
     <section id="detalhes" aria-labelledby="titulo-detalhes">
-      <h2 id="titulo-detalhes">Detalhes do lugar</h2>
-      <article id="painel-detalhes" aria-live="polite"></article>
+      <h2 id="titulo-detalhes">Detalhes dos lugares</h2>
+      <p id="msg-detalhes" class="mensagem aviso" hidden></p>
     </section>
 
 
